@@ -7,6 +7,6 @@ app.use(express.static("./public"));
 app.use("/posts", postsRouter);
 
 //Starting Live Server
-app.listen( (req, res)=>{
+app.listen(port, ()=>{
 	console.log(`Server Live nella Porta ${port}`);
 });
