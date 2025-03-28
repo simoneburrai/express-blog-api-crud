@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 4000;
 const postsRouter = require("./routers/postsRouter.js");
 
 app.use(express.static("./public"));

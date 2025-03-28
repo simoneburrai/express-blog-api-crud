@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const postController = require("../controllers/postsController.js");
-console.log(postController);
-
 
 router.get("/", postController.index);
 router.get("/:id", postController.show);
