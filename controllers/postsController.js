@@ -38,16 +38,48 @@ function store (req,res) {
 
 function update (req,res) {
 	const id = parseInt(req.params.id);
-	const searchedPost = posts.find( (post)=>{
+	const currentPost = posts.find( (post)=>{
 	return post.id === id;
 	});
-	searched
-	res.send("Modifichiamo totalmente un post");
+	if(!currentPost){
+		res.status(404).json({
+			Status: "404",
+			Error: "Post not Found"
+		})
+	}
+	currentPost.title = req.body.title;
+	currentPost.content = req.body.content;
+	currentPost.image = req.body.image;
+	currentPost.tags = req.body.tags;
+	res.status(200).json(currentPost);
 }
 
 function modify (req,res) {
-	res.send("Modifichiamo parzialmente un post");
+	const id = parseInt(req.params.id);
+	const currentPost = posts.find( (post)=>{
+	return post.id === id;
+	});
+	if(!currentPost){
+		res.status(404).json({
+			Status: "404",
+			Error: "Post not Found"
+		})
+	}
+	if(req.body.title){
+		currentPost.title = req.body.title;
+	}
+	if(req.body.content){
+		currentPost.content = req.body.content;
+	}
+	if(req.body.image){
+		currentPost.image = req.body.image;
+	}
+	if(req.body.tags){
+		currentPost.tags = req.body.tags;
+	}
+	res.status(200).json(currentPost);
 }
+
 
 function destroy (req,res) {
 	const id = parseInt(req.params.id);
