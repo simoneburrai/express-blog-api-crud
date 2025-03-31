@@ -23,10 +23,25 @@ function show (req,res) {
 }
 
 function store (req,res) {
-	res.send("Creiamo un nuovo post");
+	const id = posts.at(-1).id + 1;
+	const newPost = {
+		id,
+		title: req.body.title,
+		content: req.body.ingredients,
+		image: req.body.image,
+		tags: req.body.tags
+	}
+	posts.push(newPost);
+	res.status(201).json(newPost);
+
 }
 
 function update (req,res) {
+	const id = parseInt(req.params.id);
+	const searchedPost = posts.find( (post)=>{
+	return post.id === id;
+	});
+	searched
 	res.send("Modifichiamo totalmente un post");
 }
 
