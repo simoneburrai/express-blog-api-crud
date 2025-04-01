@@ -3,6 +3,7 @@ const posts = require("../data/posts.js");
 
 function index (req,res) {
 	const tagKey = req.query.tag;
+	kakakak.get();
 	if(tagKey){
 		const filteredPosts = posts.filter((post) => post.tags.includes(tagKey));
 		res.json(filteredPosts);
